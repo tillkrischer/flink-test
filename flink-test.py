@@ -53,7 +53,13 @@ def querymetrics():
     return metrics
 
 
-eventsA = parseinput("data.csv")
+dataA = "dataA.csv"
+dataB = "dataB.csv"
+dataA_weight = 100000
+dataB_weight = 300000
+
+eventsA = parseinput(dataA)
+eventsB = parseinput(dataB)
 
 start = time.time()
 lastsecond = 0
@@ -62,10 +68,20 @@ metrics = {}
 
 while len(eventsA) > 0:
     elapsedtime = time.time() - start
+
+    # A
     if elapsedtime > eventsA[0]:
-        print("submitting job")
-        submitjob(10000)
+        print("submitting job type A")
+        submitjob(dataA_weight)
         eventsA.pop(0)
+
+    # B
+    if elapsedtime > eventsB[0]:
+        print("submitting job type A")
+        submitjob(dataB_weight)
+        eventsB.pop(0)
+
+    # metrics
     elapsedseconds = elapsedtime // 1
     if elapsedseconds > lastsecond:
         print(elapsedseconds)
