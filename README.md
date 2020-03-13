@@ -6,6 +6,6 @@ submit jobs to Flink according to time-series and collect metrics
 ![](memory-heap-committed.png)
 ![](memory-heap.png)
 ![](memory-used.png)
-![](runnung-jobs.png)
+![](running-jobs.png)
 ![](task-slots.png)
 ![](threads.png)
